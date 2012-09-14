@@ -5,151 +5,149 @@ namespace Assignment37
 {
     class TextFileSearcher
     {
+#region Fields
+        private readonly string URLRegex = @"((http|https)://)(\w+.?/?~?)+";
+        private readonly string DateRegex = @"(Mon|Tue|Wed|Thur|Fri|Sat|Sun), (\d{2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4} (\d{2}:?){3}";
+#endregion
+
         public TextFileSearcher(string text)
         {
             Text = text;
-            ProcessText();
+            TextChar = Text.ToCharArray();
         }
 
-        private void ProcessText()
+        /// <summary>
+        /// Run the TextFileSearcher
+        /// </summary>
+        public void Run()
         {
-            string URLRegex = @"((http|https)://)(\w+.?/?~?)+";
-            URLs = Regex.Matches(Text, URLRegex, RegexOptions.IgnoreCase);
-            string DateRegex = @"(Mon|Tue|Wed|Thur|Fri|Sat|Sun), (\d{2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4} (\d{2}:?){3}";
-            Dates = Regex.Matches(Text, DateRegex, RegexOptions.IgnoreCase);
-        }
-
-        public string ReadUserInput()
-        {
-            return Console.ReadLine();
-        }
-
-        public void WriteText(string keyword)
-        {
-            //Bools to see if we have unprocessed matches
-            bool URLsDone = false;
-            bool DatesDone = false;
-            bool HighlightDone = false;
-            //Counters for each of the matches
-            int u = 0;
-            int d = 0;
-            int h = 0;
-
-            Match latestMatch = null;
-            
-            //Process every match
-            while (u < URLs.Count | d < Dates.Count | h < Highlights.Count)
+            string searchString = "";
+            while (true)
             {
-                if (u == URLs.Count)        { URLsDone      = true; }
-                if (d == Dates.Count)       { DatesDone     = true; }
-                if (h == Highlights.Count)  { HighlightDone = true; }
-
-                if(
-                
-                if ((DatesDone && !URLsDone) || URLs[u].Index < Dates[d].Index)
-                {
-                    if (latestMatch == null)
-                    {
-                        Console.Write(Text.Substring(0, URLs[u].Index));
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write(Text.Substring(URLs[u].Index, URLs[u].Length));
-                        latestMatch = URLs[u++];
-                    }
-                    else
-                    {
-                        Console.ResetColor();
-                        Console.Write(Text.Substring(latestMatch.Index + latestMatch.Length,
-                                                     URLs[u].Index - (latestMatch.Index + latestMatch.Length)));
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write(Text.Substring(URLs[u].Index, URLs[u].Length));
-                        latestMatch = URLs[u++];
-                    }
-                }
-                else if(!DatesDone)
-                {
-                    if (latestMatch == null)
-                    {
-                        Console.Write(Text.Substring(0, Dates[d].Index));
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(Text.Substring(Dates[d].Index, Dates[d].Length));
-                        latestMatch = Dates[d++];
-                    }
-                    else
-                    {
-                        Console.ResetColor();
-                        Console.Write(Text.Substring(latestMatch.Index + latestMatch.Length,
-                                                     Dates[d].Index - (latestMatch.Index + latestMatch.Length)));
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(Text.Substring(Dates[d].Index, Dates[d].Length));
-                        latestMatch = Dates[d++];
-                    }
-                }
+                if (searchString.Equals("exit system")) { break; }
+                ProcessText(searchString);
+                searchString = Console.ReadLine().ToLower();
             }
-            Console.ResetColor();
-            Console.WriteLine();
         }
 
-        public void HighlightText(string keyword)
+        /// <summary>
+        /// Process the RE and the text
+        /// </summary>
+        /// <param name="keyword">The keyword(s) to be highlighted</param>
+        private void ProcessText(string keyword)
         {
-            MatchCollection matches = Regex.Matches(Text, keyword, RegexOptions.IgnoreCase);
-
             Console.Clear();
-
-            if (0 < matches.Count)
+            //If there are no keyword, don't include it in the RE
+            if (keyword.Equals("") || keyword == null)
             {
-                //Write the text until the start of the first match
-                Console.Write(Text.Substring(0, matches[0].Index));
-                //Loop through the matches
-                for (int i = 0; i < matches.Count; i++)
-                {
-                    //Change the background color of the text
-                    Console.BackgroundColor = ConsoleColor.Yellow;
-                    //Print match i
-                    Console.Write(Text.Substring(matches[i].Index, matches[i].Length));
-                    //Reset the colors of the console to the default
-                    Console.ResetColor();
-                    //If theres still unprocessed matches
-                    if (i + 1 < matches.Count)
-                    {
-                        int start = matches[i].Index + matches[i].Length;
-                        //Difference between match i and match i+1
-                        int length = matches[i + 1].Index - (matches[i].Index + matches[i].Length);
-                        Console.Write(Text.Substring(start, length));
-                    }
-                    else
-                    {
-                        Console.Write(Text.Substring(matches[i].Index + matches[i].Length));
-                    }
-                }
+                RE = "(" + URLRegex + ")|(" + DateRegex + ")";
             }
             else
             {
-                Console.WriteLine(Text);
+                if (keyword.Contains("+"))
+                {
+                    //Split the string around the "+" and concatenate the two
+                    //strings in order to highlight them.
+                    string[] arr = keyword.Split('+');
+                    keyword = arr[0].Trim() + " " + arr[1].Trim();
+                }
+                else if (keyword.StartsWith("*"))
+                {
+                    //Replace the "*" with nothing and define the keyword as RE
+                    keyword = keyword.Replace("*", "");
+                    keyword = @"\w+" + keyword + @"\b";
+                }
+                else if (keyword.EndsWith("*"))
+                {
+                    //Replace the "*" with nothing and define the keyword as RE
+                    keyword = keyword.Replace("*", "");
+                    keyword = @"\b" + keyword + @"\w+\b";
+                }
+                //Set the RE
+                RE = "(" + URLRegex + ")|(" + DateRegex + @")|(\b" + keyword + @"\b)";
+            }
+            //Find all matches and print the text
+            Matches = Regex.Matches(Text, RE, RegexOptions.IgnoreCase);
+            WriteText();
+        }
+
+        /// <summary>
+        /// Write the text to the console, coloring the URLs, Dates and keywords searched for
+        /// </summary>
+        private void WriteText()
+        {
+            //Index to keep track of the current Match
+            int index = 0;
+            for (int i = 0; i < TextChar.Length; i++)
+            {
+                //If we still have unprocessed Matches
+                if (index < Matches.Count)
+                {
+                    //If we're currently printing a Match
+                    if (Matches[index].Index <= i)
+                    {
+                        //Groups[1] is the URL group
+                        if (Matches[index].Groups[1].Success)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                        }
+                        //Groups[5] is the Date group
+                        else if (Matches[index].Groups[5].Success)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        }
+                        //Groups[10] is the Keyword group
+                        else if (Matches[index].Groups[10].Success)
+                        {
+                            Console.BackgroundColor = ConsoleColor.Yellow;
+                        }
+                    }
+                }
+                //Reset the color and increment index if we're done writing the current Match
+                if (Matches[index].Index + Matches[index].Length == i)
+                {
+                    index++;
+                    Console.ResetColor();
+                }
+                //Write the next char
+                Console.Write(TextChar[i]);
             }
         }
 
-        public string Text
+#region Properties
+        /// <summary>
+        /// The Regular Expression
+        /// </summary>
+        private string RE
         {
             get;
-            private set;
+            set;
         }
-
-        public MatchCollection URLs
+        /// <summary>
+        /// The text as a single string
+        /// </summary>
+        private string Text
         {
             get;
-            private set;
+            set;
         }
-
-        public MatchCollection Dates
+        /// <summary>
+        /// The text as a char array
+        /// </summary>
+        private char[] TextChar
         {
             get;
-            private set;
+            set;
         }
-
-        public MatchCollection Highlights
+        /// <summary>
+        /// The Matches found when processesing
+        /// the text with the current RE
+        /// </summary>
+        private MatchCollection Matches
         {
             get;
-            private set;
+            set;
         }
+#endregion
     }
 }

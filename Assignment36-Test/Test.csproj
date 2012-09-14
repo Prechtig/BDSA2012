@@ -64,6 +64,10 @@
       <Project>{EB8D86EC-302A-4757-847F-63B706E73C7A}</Project>
       <Name>Assignment36</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Assignment37\Assignment37.csproj">
+      <Project>{FB99FCCD-2998-4005-8D3B-E97AB5A2084C}</Project>
+      <Name>Assignment37</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
