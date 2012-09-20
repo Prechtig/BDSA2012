@@ -6,8 +6,8 @@ namespace Assignment37
     class TextFileSearcher
     {
 #region Fields
-        private readonly string URLRegex = @"((http|https)://)(\w+.?/?~?)+";
-        private readonly string DateRegex = @"(Mon|Tue|Wed|Thur|Fri|Sat|Sun), (\d{2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4} (\d{2}:?){3}";
+        private readonly string URLRegex = @"((http|https)://)\w+.\w+(\S)*";
+        private readonly string DateRegex = @"(Mon|Tue|Wed|Thur|Fri|Sat|Sun), (\d{2}) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{1,4} (\d{2}:?){3}";
 #endregion
 
         public TextFileSearcher(string text)
@@ -104,7 +104,7 @@ namespace Assignment37
                     }
                 }
                 //Reset the color and increment index if we're done writing the current Match
-                if (Matches[index].Index + Matches[index].Length == i)
+                if (index < Matches.Count && Matches[index].Index + Matches[index].Length == i)
                 {
                     index++;
                     Console.ResetColor();
