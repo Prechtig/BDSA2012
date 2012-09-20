@@ -1,0 +1,74 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage{graphicx}
+
+\author{Andreas Precht Poulsen & Christian Rostrup Nielsen}
+
+\begin{document}
+
+\section{Vision}
+The purpose of this program is to make a calendar that gives a graphical overview of the daily tasks.
+
+\section{Use Cases}
+
+\begin{itemize}
+\item \textbf{UC1: Manipulating information}
+	\begin{itemize}
+	\item \textbf{Primary actor:}
+		\\The user
+	\item \textbf{Stakeholders and interests:}
+		\\The user: Wants an overview of the daily or weekly tasks
+	\item \textbf{Precondition:}
+		\\The user is logged in to the system
+	\item \textbf{Postcondition:}
+		\\The changes the user made is saved in the system.
+	\item \textbf{Basic flow:}
+		\\The user logs in to the system and either
+		\begin{itemize}
+			\item a: types in a task
+			\item b: edit an existing task
+			\item c: deletes an existing task
+		\end{itemize}
+	\end{itemize}
+
+\item \textbf{UC2: Viewing information}
+	\begin{itemize}
+	\item \textbf{Primary actor:}
+		\\The user
+	\item \textbf{Stakeholders and interests:}
+		\\The user: Wants an overview of the daily or weekly tasks
+	\item \textbf{Precondition:}
+		\\The user is logged in to the system
+	\item \textbf{Postcondition:}
+		\\No changes has been made to any tasks.
+	\item \textbf{Basic flow:}
+		\\The user logs in to the system and either
+		\begin{itemize}
+			\item a: view already existing tasks, daily
+			\item b: view already existing tasks, weekly
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\section{Use Case UML Diagrams}
+
+\includegraphics[width=\linewidth]{../Pictures/A36_Use_Case_UML_Diagram.png} 
+
+\section{Glossary}
+Task - Is used to describe any event that is added to the calendar
+
+\section{Supplementary Requirements}
+The program must...
+\begin{itemize}
+\item \textbf{Functionality}
+	\\support the tasks that a user needs in order to sustain an up to date calendar, that can be used to view task throughout the weeks. Furthermore it should not be possible for different users to view other users tasks.
+\item \textbf{Usability}
+	\\be easy to use, enabling almost anyone to use it without much hassle.
+\item \textbf{Reliability}
+	\\be available at all times, as the need for the calendar can emerge at any given time.
+\item \textbf{Performance}
+	\\not use unnecessary resources and should be able to show tasks for a given period within seconds of request.
+\item \textbf{Supportability}
+	\\be maintainable by other programmers than the original. Additionally it must be possible to extend the program with functionality. The program should be able to run on most modern devices.
+\end{itemize}
+
+\end{document}
