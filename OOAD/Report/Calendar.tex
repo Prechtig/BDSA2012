@@ -16,7 +16,7 @@ The purpose of this program is to make a calendar that gives a graphical overvie
 	\item \textbf{Primary actor:}
 		\\The user
 	\item \textbf{Stakeholders and interests:}
-		\\The user: Wants an overview of the daily or weekly tasks
+		\\The user: Wants to manipulate information in the calendar
 	\item \textbf{Precondition:}
 		\\The user is logged in to the system
 	\item \textbf{Postcondition:}
@@ -70,5 +70,24 @@ The program must...
 \item \textbf{Supportability}
 	\\be maintainable by other programmers than the original. Additionally it must be possible to extend the program with functionality. The program should be able to run on most modern devices.
 \end{itemize}
+
+\section{Domain Model}
+\includegraphics[width=\linewidth]{../Pictures/A38_Domain_Model.jpg} 
+
+\section{System Sequence Diagram}
+\includegraphics[width=\linewidth]{../Pictures/A38_SSD_UC1.jpg} 
+
+\section{Operations Contract}
+\begin{enumerate}
+	\item Contract OC1: makeNewTask
+	\begin{description}
+		\item[Operation:] makeNewTask(type, description, date, time, repetition)
+		\item[Cross References:] Use Cases: UC1
+		\item[Preconditions:] The user is logged in.
+		\item[Postconditions:] The new task is saved in the system.
+	\end{description}
+\end{enumerate}
+
+
 
 \end{document}
