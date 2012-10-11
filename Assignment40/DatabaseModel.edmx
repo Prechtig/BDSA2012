@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OOADModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="OOADModelStoreContainer">
+          <EntitySet Name="job" EntityType="OOADModel.Store.job" store:Type="Tables" Schema="OOAD" />
+          <EntitySet Name="user" EntityType="OOADModel.Store.user" store:Type="Tables" Schema="OOAD" />
+          <AssociationSet Name="job_ibfk_1" Association="OOADModel.Store.job_ibfk_1">
+            <End Role="user" EntitySet="user" />
+            <End Role="job" EntitySet="job" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="state" Type="varchar" MaxLength="16" />
+          <Property Name="subDate" Type="datetime" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="job_ibfk_1">
+          <End Role="user" Type="OOADModel.Store.user" Multiplicity="1" />
+          <End Role="job" Type="OOADModel.Store.job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OOADModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="OOADEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="jobs" EntityType="OOADModel.job" />
+          <EntitySet Name="users" EntityType="OOADModel.user" />
+          <AssociationSet Name="job_ibfk_1" Association="OOADModel.job_ibfk_1">
+            <End Role="user" EntitySet="users" />
+            <End Role="job" EntitySet="jobs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="state" />
+          <Property Type="DateTime" Name="subDate" Nullable="false" />
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="OOADModel.job_ibfk_1" FromRole="job" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" />
+          <NavigationProperty Name="jobs" Relationship="OOADModel.job_ibfk_1" FromRole="user" ToRole="job" />
+        </EntityType>
+        <Association Name="job_ibfk_1">
+          <End Type="OOADModel.user" Role="user" Multiplicity="1" />
+          <End Type="OOADModel.job" Role="job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="job">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OOADModelStoreContainer" CdmEntityContainer="OOADEntities">
+          <EntitySetMapping Name="jobs">
+            <EntityTypeMapping TypeName="OOADModel.job">
+              <MappingFragment StoreEntitySet="job">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="subDate" ColumnName="subDate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="OOADModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DatabaseModel">
+        <EntityTypeShape EntityType="OOADModel.job" Width="1.5" PointX="3" PointY="0.875" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="OOADModel.user" Width="1.5" PointX="0.75" PointY="1.125" Height="1.5956835937499994" />
+        <AssociationConnector Association="OOADModel.job_ibfk_1" >
+          <ConnectorPoint PointX="2.25" PointY="1.9228417968749998" />
+          <ConnectorPoint PointX="3" PointY="1.9228417968749998" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

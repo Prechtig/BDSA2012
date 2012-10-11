@@ -1,5 +1,6 @@
 \documentclass[a4paper, 10pt]{article}
 \usepackage{graphicx}
+\usepackage[english]{babel}
 
 \author{Andreas Precht Poulsen & Christian Rostrup Nielsen}
 
@@ -78,15 +79,37 @@ The program must...
 \includegraphics[width=\linewidth]{../Pictures/A38_SSD_UC1.jpg} 
 
 \section{Operations Contract}
-\begin{enumerate}
-	\item Contract OC1: makeNewTask
-	\begin{description}
-		\item[Operation:] makeNewTask(type, description, date, time, repetition)
-		\item[Cross References:] Use Cases: UC1
-		\item[Preconditions:] The user is logged in.
-		\item[Postconditions:] The new task is saved in the system.
-	\end{description}
-\end{enumerate}
+\begin{description}
+\item[\large Contract OC1: makeNewTask] \hfill \\
+\begin{tabular}{ l l }
+	\textbf{Operation:} & makeNewTask(type, description, date, time, repetition) \\
+	\textbf{Cross References:} & Use Cases: UC1 \\
+	\textbf{Preconditions:} & The user is logged in. \\
+	\textbf{Postconditions:} & The new task is saved in the system.
+\end{tabular}
+\end{description}
+
+\section{Discussion}
+Due to the fact that many people store personal information and personal task, like an appointment at the Doctor's. Since we're storing personal information we security is a major issue. We would like to make our system as secure as possible while still retaining an acceptable performance.
+
+\section{UML Package Diagram}
+\includegraphics[width=\linewidth]{../Pictures/UML_Package_Diagram.jpg}
+
+\section{Interaction Diagrams}
+\includegraphics[width=\linewidth]{../Pictures/Interaction_Diagram_Create_Task.jpg}
+
+\includegraphics[width=\linewidth]{../Pictures/Interaction_Diagram_View_Task.jpg}
+
+\section{Revision History}
+\begin{tabular}{ | c | c | p{6cm} | p{3cm} | }
+\hline
+\textbf{Version} & \textbf{Date} & \textbf{Description} & \textbf{Author}
+\\ \hline
+1 & 20. sep 2012 & - Added: Vision, Use Cases, Use Case UML Diagrams, Glossary \& Supplementary Requirements - Changes: None & Andreas Precht \& Christian Rostrup
+\\ \hline
+2 & 02. oct 2012 & - Added: Discussion, Revision History, UML Package Diagram \& Interaction Diagrams - Changes: Operation Contract& Andreas Precht \& Christian Rostrup
+\\ \hline
+\end{tabular}
 
 
 

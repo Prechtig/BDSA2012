@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.5.21)  21 SEP 2012 15:58
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.5.21)  3 OCT 2012 21:02
 entering extended mode
 **Calendar.tex
 ("D:\Visual Studio Workspace\BDSA2012\OOAD\Report\Calendar.tex"
@@ -62,47 +62,68 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
+(D:\Programs\MiKTeX\tex\generic\babel\babel.sty
+Package: babel 2008/07/08 v3.8m The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(D:\Programs\MiKTeX\tex\latex\00miktex\bblopts.cfg
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+(D:\Programs\MiKTeX\tex\generic\babel\english.ldf
+Language: english 2005/03/30 v3.3o English support from the babel system
+
+(D:\Programs\MiKTeX\tex\generic\babel\babel.def
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen105
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
 ("D:\Visual Studio Workspace\BDSA2012\OOAD\Report\Calendar.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
 
 (D:\Programs\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count88
-\scratchdimen=\dimen105
+\scratchcounter=\count89
+\scratchdimen=\dimen106
 \scratchbox=\box26
-\nofMPsegments=\count89
-\nofMParguments=\count90
+\nofMPsegments=\count90
+\nofMParguments=\count91
 \everyMPshowfont=\toks15
-\MPscratchCnt=\count91
-\MPscratchDim=\dimen106
-\MPnumerator=\count92
-\makeMPintoPDFobject=\count93
+\MPscratchCnt=\count92
+\MPscratchDim=\dimen107
+\MPnumerator=\count93
+\makeMPintoPDFobject=\count94
 \everyMPtoPDFconversion=\toks16
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 14.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 15.
  (D:\Programs\MiKTeX\tex\latex\base\omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 15.
 
 <../Pictures/A36_Use_Case_UML_Diagram.png, id=1, 1177.5995pt x 583.781pt>
 File: ../Pictures/A36_Use_Case_UML_Diagram.png Graphic file (type png)
 
 <use ../Pictures/A36_Use_Case_UML_Diagram.png>
 Package pdftex.def Info: ../Pictures/A36_Use_Case_UML_Diagram.png used on input
- line 54.
+ line 55.
 (pdftex.def)             Requested size: 345.0pt x 171.02916pt.
  [1
 
@@ -111,7 +132,7 @@ Package pdftex.def Info: ../Pictures/A36_Use_Case_UML_Diagram.png used on input
 File: ../Pictures/A38_Domain_Model.jpg Graphic file (type jpg)
 
 <use ../Pictures/A38_Domain_Model.jpg>
-Package pdftex.def Info: ../Pictures/A38_Domain_Model.jpg used on input line 75
+Package pdftex.def Info: ../Pictures/A38_Domain_Model.jpg used on input line 76
 .
 (pdftex.def)             Requested size: 345.0pt x 124.95921pt.
  [2 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/A36_Use_Case_UML_Diagram
@@ -120,26 +141,76 @@ Package pdftex.def Info: ../Pictures/A38_Domain_Model.jpg used on input line 75
 File: ../Pictures/A38_SSD_UC1.jpg Graphic file (type jpg)
 
 <use ../Pictures/A38_SSD_UC1.jpg>
-Package pdftex.def Info: ../Pictures/A38_SSD_UC1.jpg used on input line 78.
+Package pdftex.def Info: ../Pictures/A38_SSD_UC1.jpg used on input line 79.
 (pdftex.def)             Requested size: 345.0pt x 241.92805pt.
- [3 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/A38_Domain_Model.jpg> <D
-:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/A38_SSD_UC1.jpg>]
-("D:\Visual Studio Workspace\BDSA2012\OOAD\Report\Calendar.aux") ) 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 84.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 84.
+
+Overfull \hbox (35.55286pt too wide) in paragraph at lines 83--90
+[] 
+ []
+
+[3 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/A38_Domain_Model.jpg> <D:
+/Visual Studio Workspace/BDSA2012/OOAD/Pictures/A38_SSD_UC1.jpg>]
+<../Pictures/UML_Package_Diagram.jpg, id=20, 2898.83pt x 1978.39125pt>
+File: ../Pictures/UML_Package_Diagram.jpg Graphic file (type jpg)
+
+<use ../Pictures/UML_Package_Diagram.jpg>
+Package pdftex.def Info: ../Pictures/UML_Package_Diagram.jpg used on input line
+ 96.
+(pdftex.def)             Requested size: 345.0pt x 235.4345pt.
+
+<../Pictures/Interaction_Diagram_Create_Task.jpg, id=21, 2858.68pt x 1943.26pt>
+File: ../Pictures/Interaction_Diagram_Create_Task.jpg Graphic file (type jpg)
+<use ../Pictures/Interaction_Diagram_Create_Task.jpg>
+Package pdftex.def Info: ../Pictures/Interaction_Diagram_Create_Task.jpg used o
+n input line 99.
+(pdftex.def)             Requested size: 345.0pt x 234.51547pt.
+
+<../Pictures/Interaction_Diagram_View_Task.jpg, id=22, 2907.86375pt x 1677.2662
+5pt>
+File: ../Pictures/Interaction_Diagram_View_Task.jpg Graphic file (type jpg)
+ <use ../Pictures/Interaction_Diagram_View_Task.jpg>
+Package pdftex.def Info: ../Pictures/Interaction_Diagram_View_Task.jpg used on 
+input line 101.
+(pdftex.def)             Requested size: 345.0pt x 198.98549pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 101--102
+[][] 
+ []
+
+[4 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/UML_Package_Diagram.jpg> 
+<D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/Interaction_Diagram_Create_T
+ask.jpg>]
+Underfull \hbox (badness 1867) in paragraph at lines 108--108
+[]\OT1/cmr/m/n/10 - Added: Vi-sion, Use Cases, Use
+ []
+
+
+Overfull \hbox (51.1872pt too wide) in paragraph at lines 104--113
+[] 
+ []
+
+[5 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/Interaction_Diagram_View_
+Task.jpg>] ("D:\Visual Studio Workspace\BDSA2012\OOAD\Report\Calendar.aux") ) 
 Here is how much of TeX's memory you used:
- 1141 strings out of 494045
- 15205 string characters out of 3152011
- 66867 words of memory out of 3000000
- 4475 multiletter control sequences out of 15000+200000
- 4553 words of font info for 17 fonts, out of 3000000 for 9000
+ 1469 strings out of 494045
+ 19599 string characters out of 3152011
+ 73770 words of memory out of 3000000
+ 4788 multiletter control sequences out of 15000+200000
+ 4860 words of font info for 18 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 27i,4n,19p,235b,224s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb><D:/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmr10.pfb><D:/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Calendar.pdf (3 pages, 8425170 bytes).
+ 27i,8n,19p,306b,224s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D
+:/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><D:/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
+y10.pfb>
+Output written on Calendar.pdf (5 pages, 12093066 bytes).
 PDF statistics:
- 33 PDF objects out of 1000 (max. 8388607)
+ 42 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
