@@ -27,6 +27,7 @@ namespace MultiThreading
             t1.Join();
             t2.Join();
             Console.Write(result.ToString());
+            String test = "KOM NU!";
         }
     }
 }
