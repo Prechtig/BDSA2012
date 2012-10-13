@@ -19,7 +19,7 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("OOADModel", "job_ibfk_1", "user", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Assignment40.user), "job", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Assignment40.job), true)]
+[assembly: EdmRelationshipAttribute("OOADModel", "logEntry_ibfk_1", "user", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Assignment40.user), "logEntry", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Assignment40.logEntry), true)]
 
 #endregion
 
@@ -74,18 +74,18 @@ namespace Assignment40
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<job> jobs
+        public ObjectSet<logEntry> logEntries
         {
             get
             {
-                if ((_jobs == null))
+                if ((_logEntries == null))
                 {
-                    _jobs = base.CreateObjectSet<job>("jobs");
+                    _logEntries = base.CreateObjectSet<logEntry>("logEntries");
                 }
-                return _jobs;
+                return _logEntries;
             }
         }
-        private ObjectSet<job> _jobs;
+        private ObjectSet<logEntry> _logEntries;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -108,11 +108,11 @@ namespace Assignment40
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the jobs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the logEntries EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddTojobs(job job)
+        public void AddTologEntries(logEntry logEntry)
         {
-            base.AddObject("jobs", job);
+            base.AddObject("logEntries", logEntry);
         }
     
         /// <summary>
@@ -134,26 +134,30 @@ namespace Assignment40
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="OOADModel", Name="job")]
+    [EdmEntityTypeAttribute(NamespaceName="OOADModel", Name="logEntry")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class job : EntityObject
+    public partial class logEntry : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new job object.
+        /// Create a new logEntry object.
         /// </summary>
         /// <param name="id">Initial value of the id property.</param>
-        /// <param name="subDate">Initial value of the subDate property.</param>
+        /// <param name="jobId">Initial value of the jobId property.</param>
         /// <param name="userId">Initial value of the userId property.</param>
-        public static job Createjob(global::System.Int32 id, global::System.DateTime subDate, global::System.Int32 userId)
+        /// <param name="timeStamp">Initial value of the timeStamp property.</param>
+        /// <param name="state">Initial value of the state property.</param>
+        public static logEntry CreatelogEntry(global::System.Int32 id, global::System.Int32 jobId, global::System.Int32 userId, global::System.DateTime timeStamp, global::System.String state)
         {
-            job job = new job();
-            job.id = id;
-            job.subDate = subDate;
-            job.userId = userId;
-            return job;
+            logEntry logEntry = new logEntry();
+            logEntry.id = id;
+            logEntry.jobId = jobId;
+            logEntry.userId = userId;
+            logEntry.timeStamp = timeStamp;
+            logEntry.state = state;
+            return logEntry;
         }
 
         #endregion
@@ -190,50 +194,26 @@ namespace Assignment40
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String state
-        {
-            get
-            {
-                return _state;
-            }
-            set
-            {
-                OnstateChanging(value);
-                ReportPropertyChanging("state");
-                _state = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("state");
-                OnstateChanged();
-            }
-        }
-        private global::System.String _state;
-        partial void OnstateChanging(global::System.String value);
-        partial void OnstateChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.DateTime subDate
+        public global::System.Int32 jobId
         {
             get
             {
-                return _subDate;
+                return _jobId;
             }
             set
             {
-                OnsubDateChanging(value);
-                ReportPropertyChanging("subDate");
-                _subDate = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("subDate");
-                OnsubDateChanged();
+                OnjobIdChanging(value);
+                ReportPropertyChanging("jobId");
+                _jobId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("jobId");
+                OnjobIdChanged();
             }
         }
-        private global::System.DateTime _subDate;
-        partial void OnsubDateChanging(global::System.DateTime value);
-        partial void OnsubDateChanged();
+        private global::System.Int32 _jobId;
+        partial void OnjobIdChanging(global::System.Int32 value);
+        partial void OnjobIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -258,6 +238,54 @@ namespace Assignment40
         private global::System.Int32 _userId;
         partial void OnuserIdChanging(global::System.Int32 value);
         partial void OnuserIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime timeStamp
+        {
+            get
+            {
+                return _timeStamp;
+            }
+            set
+            {
+                OntimeStampChanging(value);
+                ReportPropertyChanging("timeStamp");
+                _timeStamp = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("timeStamp");
+                OntimeStampChanged();
+            }
+        }
+        private global::System.DateTime _timeStamp;
+        partial void OntimeStampChanging(global::System.DateTime value);
+        partial void OntimeStampChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String state
+        {
+            get
+            {
+                return _state;
+            }
+            set
+            {
+                OnstateChanging(value);
+                ReportPropertyChanging("state");
+                _state = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("state");
+                OnstateChanged();
+            }
+        }
+        private global::System.String _state;
+        partial void OnstateChanging(global::System.String value);
+        partial void OnstateChanged();
 
         #endregion
 
@@ -270,16 +298,16 @@ namespace Assignment40
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OOADModel", "job_ibfk_1", "user")]
+        [EdmRelationshipNavigationPropertyAttribute("OOADModel", "logEntry_ibfk_1", "user")]
         public user user
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<user>("OOADModel.job_ibfk_1", "user").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<user>("OOADModel.logEntry_ibfk_1", "user").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<user>("OOADModel.job_ibfk_1", "user").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<user>("OOADModel.logEntry_ibfk_1", "user").Value = value;
             }
         }
         /// <summary>
@@ -291,13 +319,13 @@ namespace Assignment40
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<user>("OOADModel.job_ibfk_1", "user");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<user>("OOADModel.logEntry_ibfk_1", "user");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<user>("OOADModel.job_ibfk_1", "user", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<user>("OOADModel.logEntry_ibfk_1", "user", value);
                 }
             }
         }
@@ -393,18 +421,18 @@ namespace Assignment40
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("OOADModel", "job_ibfk_1", "job")]
-        public EntityCollection<job> jobs
+        [EdmRelationshipNavigationPropertyAttribute("OOADModel", "logEntry_ibfk_1", "logEntry")]
+        public EntityCollection<logEntry> logEntries
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<job>("OOADModel.job_ibfk_1", "job");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<logEntry>("OOADModel.logEntry_ibfk_1", "logEntry");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<job>("OOADModel.job_ibfk_1", "job", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<logEntry>("OOADModel.logEntry_ibfk_1", "logEntry", value);
                 }
             }
         }

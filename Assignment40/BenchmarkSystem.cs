@@ -63,7 +63,7 @@ namespace Assignment40
                 {
                     job.State = JobState.Running;
                     job.Process(new[] { "" });
-                    job.State = JobState.Finished;
+                    job.State = JobState.Ended;
                 }
                 //If the job failed, notify subscribers
                 catch (Exception)

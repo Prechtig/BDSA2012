@@ -13,7 +13,7 @@ namespace Assignment40
             JobOwner = jobOwner;
             CPUs = cpus;
             ExpectedRuntime = expectedRuntime;
-            State = JobState.Unassigned;
+            State = JobState.Unknown;
             this.process = process;
         }
 

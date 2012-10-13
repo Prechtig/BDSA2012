@@ -10,24 +10,38 @@ namespace Assignment40
 
         static void Main(string[] args)
         {
-            using (var context = new OOADEntities())
+            IEnumerable<user> users = DAO.GetUsers();
+
+            foreach (user u in users)
             {
-                var myJobs = from j in context.jobs
-                             select j;
-                foreach (job job in myJobs)
-                {
-                    Console.WriteLine(String.Format("id: {0} - state: {1} - subDate: {2} - userId: {3}",
-                                                    job.id, job.state, job.subDate, job.userId));
-                }
-
-                var myUsers = from u in context.users
-                              select u;
-                foreach (user user in myUsers)
-                {
-                    Console.WriteLine(String.Format("name: {0} - id: {1}", user.name, user.id));
-                }
-
+                Console.WriteLine("id: {0} - name: {1}", u.id, u.name);
             }
+            Dictionary<String, List<LogEntry>> dic1 = DAO.GetJobs(new DateTime(1000, 1, 1, 0, 0, 0, 0), new DateTime(3000, 1, 1, 0, 0, 0, 0));
+
+            foreach (KeyValuePair<String, List<LogEntry>> pair in dic1)
+            {
+                Console.WriteLine(pair.Key);
+                foreach (LogEntry entry in pair.Value)
+                {
+                    Console.WriteLine("    {0}", entry);
+                }
+            }
+
+            LogEntry newEntry = new LogEntry(0, 1, 1, DateTime.Now, "Running");
+            DAO.AddLogEntry(newEntry);
+
+            Dictionary<String, List<LogEntry>> dic2 = DAO.GetJobs(4, new DateTime(1000, 1, 1, 0, 0, 0, 0), new DateTime(3000, 1, 1, 0, 0, 0, 0));
+
+            foreach (KeyValuePair<String, List<LogEntry>> pair in dic2)
+            {
+                Console.WriteLine(pair.Key);
+                foreach (LogEntry entry in pair.Value)
+                {
+                    Console.WriteLine("    {0}", entry);
+                }
+            }
+
+            Console.WriteLine(DAO.GetUser(3));
         }
     }
 }
