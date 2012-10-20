@@ -16,7 +16,7 @@ namespace UI
 
         }
 
-        public void DisplayMonth(List<Task> task)
+        public void DisplayTasks(List<Task> task)
         {
 
         }

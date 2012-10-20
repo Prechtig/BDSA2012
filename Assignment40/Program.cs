@@ -22,7 +22,7 @@ namespace Assignment40
             //Sets the expectedRuntime to a number between 0.0 and 5.0 both inclusive
             double expectedRuntime = rnd.NextDouble() * 5.0;
             Owner jobOwner = new Owner("Christian", 4);
-            Job job = new Job(0, jobOwner, cpus, expectedRuntime, process);
+            Job job = new Job(jobOwner, cpus, expectedRuntime, process);
             return job;
         }
 

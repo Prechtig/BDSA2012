@@ -4,12 +4,14 @@ namespace Assignment40
 {
     class Job
     {
+        public static uint globalId = 0;
         private Func<string[], int> process;
 
         public Job() { }
 
-        public Job(int id, Owner jobOwner, int cpus, double expectedRuntime, Func<string[], int> process)
+        public Job(Owner jobOwner, int cpus, double expectedRuntime, Func<string[], int> process)
         {
+            Id = globalId++;
             JobOwner = jobOwner;
             //Limit the number of cpus to 1-10
             CPUs = cpus < 1 ? 1 : 10 < cpus ? 10 : cpus;
@@ -42,7 +44,13 @@ namespace Assignment40
         }
 #endregion
 
-        #region Properties
+#region Properties
+        public uint Id
+        {
+            get;
+            private set;
+        }
+        
         public Owner JobOwner
         {
             get;
