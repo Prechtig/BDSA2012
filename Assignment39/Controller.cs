@@ -44,7 +44,7 @@ namespace Controller
         private void DisplayTasks(DateTime startDate, DateTime endDate)
         {
             List<Task> list = domain.GetTasks(startDate, endDate);
-            view.DisplayMonth(list);
+            view.DisplayTasks(list);
         }
 
         public static Controller GetController()

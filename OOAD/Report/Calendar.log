@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.5.21)  3 OCT 2012 21:02
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.5.21)  20 OCT 2012 17:47
 entering extended mode
 **Calendar.tex
 ("D:\Visual Studio Workspace\BDSA2012\OOAD\Report\Calendar.tex"
@@ -174,43 +174,46 @@ n input line 99.
 File: ../Pictures/Interaction_Diagram_View_Task.jpg Graphic file (type jpg)
  <use ../Pictures/Interaction_Diagram_View_Task.jpg>
 Package pdftex.def Info: ../Pictures/Interaction_Diagram_View_Task.jpg used on 
-input line 101.
+input line 100.
 (pdftex.def)             Requested size: 345.0pt x 198.98549pt.
+ [4 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/UML_Package_Diagram.jpg>
+]
+<../Pictures/Design_Class_Diagram.jpg, id=26, 3276.24pt x 2457.18pt>
+File: ../Pictures/Design_Class_Diagram.jpg Graphic file (type jpg)
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 101--102
-[][] 
- []
-
-[4 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/UML_Package_Diagram.jpg> 
-<D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/Interaction_Diagram_Create_T
-ask.jpg>]
-Underfull \hbox (badness 1867) in paragraph at lines 108--108
+<use ../Pictures/Design_Class_Diagram.jpg>
+Package pdftex.def Info: ../Pictures/Design_Class_Diagram.jpg used on input lin
+e 103.
+(pdftex.def)             Requested size: 345.0pt x 258.74263pt.
+ [5 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/Interaction_Diagram_Crea
+te_Task.jpg> <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/Interaction_Dia
+gram_View_Task.jpg>]
+Underfull \hbox (badness 1867) in paragraph at lines 110--110
 []\OT1/cmr/m/n/10 - Added: Vi-sion, Use Cases, Use
  []
 
 
-Overfull \hbox (51.1872pt too wide) in paragraph at lines 104--113
+Overfull \hbox (51.1872pt too wide) in paragraph at lines 106--116
 [] 
  []
 
-[5 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/Interaction_Diagram_View_
-Task.jpg>] ("D:\Visual Studio Workspace\BDSA2012\OOAD\Report\Calendar.aux") ) 
+[6 <D:/Visual Studio Workspace/BDSA2012/OOAD/Pictures/Design_Class_Diagram.jpg>
+] ("D:\Visual Studio Workspace\BDSA2012\OOAD\Report\Calendar.aux") ) 
 Here is how much of TeX's memory you used:
- 1469 strings out of 494045
- 19599 string characters out of 3152011
+ 1474 strings out of 494045
+ 19786 string characters out of 3152011
  73770 words of memory out of 3000000
- 4788 multiletter control sequences out of 15000+200000
+ 4792 multiletter control sequences out of 15000+200000
  4860 words of font info for 18 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  27i,8n,19p,306b,224s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D
-:/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb><D:/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
-y10.pfb>
-Output written on Calendar.pdf (5 pages, 12093066 bytes).
+<D:/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmbx12.pfb><D:/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb><D:/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Calendar.pdf (6 pages, 14123427 bytes).
 PDF statistics:
- 42 PDF objects out of 1000 (max. 8388607)
+ 46 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

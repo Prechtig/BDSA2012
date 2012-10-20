@@ -76,6 +76,7 @@
     <Compile Include="DAOTest.cs" />
     <Compile Include="GameOfLifeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextFileSearcherTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Shadow Include="Test References\Assignment36.accessor" />
@@ -84,6 +85,10 @@
     <ProjectReference Include="..\Assignment36\Assignment36.csproj">
       <Project>{EB8D86EC-302A-4757-847F-63B706E73C7A}</Project>
       <Name>Assignment36</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Assignment37\Assignment37.csproj">
+      <Project>{FB99FCCD-2998-4005-8D3B-E97AB5A2084C}</Project>
+      <Name>Assignment37</Name>
     </ProjectReference>
     <ProjectReference Include="..\Assignment38\Assignment38.csproj">
       <Project>{C5926941-0D8D-4F23-8493-3FBDF802D965}</Project>
@@ -99,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Shadow Include="Test References\Assignment40.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="Test References\Assignment37.accessor" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
