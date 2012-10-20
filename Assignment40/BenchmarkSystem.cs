@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Threading;
 
 namespace Assignment40
 {
     class BenchmarkSystem
     {
+        //BenchmarkSystem Singleton
+        private static BenchmarkSystem bs;
         //Events
         public event Action<Job> JobSubmitted;
         public event Action<Job> JobCancelled;
@@ -13,9 +16,23 @@ namespace Assignment40
         //Scheduler
         private Scheduler scheduler;
 
-        public BenchmarkSystem()
+        private BenchmarkSystem()
         {
             scheduler = new Scheduler();
+        }
+
+        public static BenchmarkSystem GetBenchmarkSystem()
+        {
+            if (bs == null)
+            {
+                bs = new BenchmarkSystem();
+            }
+            return bs;
+        }
+
+        public Scheduler GetScheduler()
+        {
+            return scheduler;
         }
 
         /// <summary>
@@ -24,12 +41,12 @@ namespace Assignment40
         /// <param name="job">The job to submit</param>
         public void Submit(Job job)
         {
+            scheduler.AddJob(job);
             //Notify subscribers
             if (JobSubmitted != null)
             {
                 JobSubmitted(job);
             }
-            scheduler.AddJob(job);
         }
 
         /// <summary>
@@ -38,12 +55,12 @@ namespace Assignment40
         /// <param name="job">The job to cancel</param>
         public void Cancel(Job job)
         {
+            scheduler.RemoveJob(job);
             //Notify subscribers
             if (JobCancelled != null)
             {
                 JobCancelled(job);
             }
-            scheduler.RemoveJob(job);
         }
 
         /// <summary>
@@ -62,8 +79,10 @@ namespace Assignment40
                 try
                 {
                     job.State = JobState.Running;
-                    job.Process(new[] { "" });
-                    job.State = JobState.Ended;
+                    scheduler.AvailableCPUs -= job.CPUs;
+                    Console.WriteLine("Available CPUs = {0}", scheduler.AvailableCPUs);
+                    Thread t = new Thread(() => job.Process(new[] { job.ExpectedRuntime.ToString() }));
+                    t.Start();                    
                 }
                 //If the job failed, notify subscribers
                 catch (Exception)
@@ -71,6 +90,7 @@ namespace Assignment40
                     if (JobFailed != null)
                     {
                         JobFailed(job);
+                        job.State = JobState.Error;
                     }
                 }
                 //Notify subscribers
@@ -79,6 +99,6 @@ namespace Assignment40
                     JobTerminated(job);
                 }
             }
-        }
+        }       
     }
 }

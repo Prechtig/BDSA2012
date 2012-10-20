@@ -8,13 +8,16 @@ namespace Assignment40
 
         public Job() { }
 
-        public Job(Owner jobOwner, int cpus, uint expectedRuntime, Func<string[], int> process)
+        public Job(int id, Owner jobOwner, int cpus, double expectedRuntime, Func<string[], int> process)
         {
             JobOwner = jobOwner;
-            CPUs = cpus;
-            ExpectedRuntime = expectedRuntime;
+            //Limit the number of cpus to 1-10
+            CPUs = cpus < 1 ? 1 : 10 < cpus ? 10 : cpus;
+            //Limit the expected runtime to 0.1 - 5.0
+            ExpectedRuntime = expectedRuntime < 0.1 ? 0.1 : 5.0 < expectedRuntime ? 5.0 : expectedRuntime;
             State = JobState.Unknown;
             this.process = process;
+            Delayed = 0;
         }
 
         /// <summary>
@@ -24,13 +27,18 @@ namespace Assignment40
         /// <returns></returns>
         public int Process(string[] args)
         {
-            return process(args);
+            int i = process(args);
+            Scheduler scheduler = BenchmarkSystem.GetBenchmarkSystem().GetScheduler();
+            scheduler.AvailableCPUs += CPUs;
+            Console.WriteLine("Available CPUs = {0}", scheduler.AvailableCPUs);
+            State = JobState.Ended;
+            return i;
         }
 
 #region Overridden Methods
         public override string ToString()
         {
-            return string.Format("Owner: {0} - CPUs: {1} - ExpectedRuntime: {2} - State: {3} - TimeStamp: {4}", JobOwner, CPUs, ExpectedRuntime, State, TimeStamp);
+            return string.Format("Delayed: {0} - CPUs: {1} - ExpectedRuntime: {2} - State: {3}", Delayed, CPUs, ExpectedRuntime, State);
         }
 #endregion
 
@@ -47,7 +55,7 @@ namespace Assignment40
             private set;
         }
 
-        public uint ExpectedRuntime
+        public double ExpectedRuntime
         {
             get;
             private set;
@@ -64,6 +72,8 @@ namespace Assignment40
             get;
             set;
         }
+
+        public int Delayed { get; set; }
 #endregion
     }
 }

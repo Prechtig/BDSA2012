@@ -1,77 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Assignment40
 {
     class Scheduler
     {
         //Fields containing all of the queues
-        private Queue<Job> shortQueue;
-        private Queue<Job> longQueue;
-        private Queue<Job> veryLongQueue;
-        private List<Queue<Job>> queues;
+        private List<Job> queue;
 
         public Scheduler()
         {
-            shortQueue = new Queue<Job>();
-            longQueue = new Queue<Job>();
-            veryLongQueue = new Queue<Job>();
-            queues = new List<Queue<Job>>();
-            queues.Add(shortQueue);
-            queues.Add(longQueue);
-            queues.Add(veryLongQueue);
+            queue = new List<Job>();
+            AvailableCPUs = 30;
         }
 
         //Adds a specific job to the correct queue
         public void AddJob(Job job)
-        {    
-            job.State = JobState.Queued;
+        {
+            queue.Add(job);
             job.TimeStamp = DateTime.Now;
-
-            if(job.ExpectedRuntime < 30) {
-                shortQueue.Enqueue(job);
-            }
-            else if(30 <= job.ExpectedRuntime && job.ExpectedRuntime <= 120){
-                longQueue.Enqueue(job);
-            }
-            else{
-                veryLongQueue.Enqueue(job);
-            }
+            job.State = JobState.Queued;
         }
 
         //Remove a job from a specified queue
         public void RemoveJob(Job job)
         {
-            job.State = JobState.Cancelled;
+            queue.Remove(job);
+        }
+
+        private Job PopJob(int i)
+        {
+            Job job = queue[i];
+            if (job.CPUs < AvailableCPUs)
+            {
+                queue.Remove(job);
+                return job;
+            }
+            else if (job.Delayed == 2)
+            {
+                //Wait for the resources to be available
+                while (AvailableCPUs < job.CPUs) { }
+                queue.Remove(job);
+                return job;
+            }
+            else if (i + 1 == queue.Count)
+            {
+                //Start over again with the new delayed values
+                return PopJob(0);
+            }
+            else
+            {
+                job.Delayed++;
+                return PopJob(i + 1);
+            }
         }
 
         //Returns the earliest inserted job independent of queue
         public Job PopJob()
         {
-            Queue<Job> popQueue = queues[0];
-            
-            //Remove all cancelled Jobs
-            foreach (Queue<Job> queue in queues)
+            if (0 < queue.Count)
             {
-                while (0 < queue.Count && queue.Peek().State == JobState.Cancelled) { queue.Dequeue(); }
-            }
-            //Find the oldest job
-            foreach (Queue<Job> queue in queues)
-            {
-                if (0 < queue.Count && (popQueue.Count == 0 || queue.Peek().TimeStamp < popQueue.Peek().TimeStamp))
-                {
-                    popQueue = queue;
-                }
-            }
-            //Return the oldest job if there's any
-            if (0 < popQueue.Count)
-            {
-                return popQueue.Dequeue();
+                return PopJob(0);
             }
             else
             {
                 return null;
             }
+        }
+
+        public int AvailableCPUs
+        {
+            get;
+            set;
         }
     }
 }

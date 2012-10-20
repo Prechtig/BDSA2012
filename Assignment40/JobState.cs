@@ -4,7 +4,7 @@ namespace Assignment40
 {
     public enum JobState
     {
-        Queued, Running, Ended, Error, Cancelled, Unknown
+        Queued, Running, Ended, Error, Unknown
     }
 
     public static class JobStateMethods
@@ -21,8 +21,6 @@ namespace Assignment40
                     return JobState.Ended;
                 case "Error" :
                     return JobState.Error;
-                case "Cancelled" :
-                    return JobState.Cancelled;
                 case "Unknown" :
                     return JobState.Unknown;
                 default :
