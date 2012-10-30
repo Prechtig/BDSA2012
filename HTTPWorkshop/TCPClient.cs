@@ -13,24 +13,36 @@ namespace HTTPWorkshop
         public static void Run()
         {
             int serverPort = 8080;
-            IPAddress serverIp = IPAddress.Parse("10.211.55.4"); //IPAdress of Anders
+            IPAddress serverIp = IPAddress.Parse("10.25.232.214"); //IPAdress
             Console.WriteLine("Server IP: {0}", serverIp);
-
             Socket echoSocket = new Socket(
-                serverIp.AddressFamily,
-                SocketType.Stream,
-                ProtocolType.Tcp);
+            serverIp.AddressFamily,
+            SocketType.Stream,
+            ProtocolType.Tcp);
             echoSocket.Connect(serverIp, serverPort);
-
-            using(Stream echoServiceStream = new NetworkStream(echoSocket, true))
-            using(StreamReader reader = new StreamReader(echoServiceStream))
-            using(StreamWriter writer = new StreamWriter(echoServiceStream))
+            using (Stream echoServiceStream = new NetworkStream(echoSocket, true))
             {
-                writer.WriteLine("Hello World");
-                writer.Flush();
-                String data = reader.ReadToEnd();
-                Console.WriteLine("[from Server]: {0}", data);
+                string msg = "Hello world";
+                Byte[] msgByte = encodeString(msg);
+                //Gets the length of the message in bytes
+                Byte[] msgByteLength = BitConverter.GetBytes(msg.Length);
+                //Sends the length of the message in bytes
+                echoServiceStream.Write(msgByteLength, 0, msgByteLength.Length);
+                echoServiceStream.Flush();
+                //Sends the message
+                echoServiceStream.Write(msgByte, 0, msgByte.Length);
+                //writer.Write(msg.Length);
+                // writer.WriteLine(msg);
+                echoServiceStream.Flush();
+
             }
         }
+        private static Byte[] encodeString(string s)
+        {
+            System.Text.ASCIIEncoding enconding = new System.Text.ASCIIEncoding();
+            Byte[] message = enconding.GetBytes(s);
+            return message;
+        }
+
     }
 }
