@@ -81,7 +81,7 @@ The program must...
 \section{Operations Contract}
 \begin{description}
 \item[\large Contract OC1: makeNewTask] \hfill \\
-\begin{tabular}{ l l }
+\begin{tabular}{ r l }
 	\textbf{Operation:} & makeNewTask(type, description, date, time, repetition) \\
 	\textbf{Cross References:} & Use Cases: UC1 \\
 	\textbf{Preconditions:} & The user is logged in. \\
@@ -89,8 +89,9 @@ The program must...
 \end{tabular}
 \end{description}
 
-\section{Discussion}
-Due to the fact that many people store personal information and personal task, like an appointment at the Doctor's. Since we're storing personal information we security is a major issue. We would like to make our system as secure as possible while still retaining an acceptable performance.
+\section{Discussion of software attributes}
+Due to the fact that many people store personal information and personal tasks, like an appointment at the Doctor's, we would like to make our system as secure as possible while still retaining an acceptable performance. \\
+The availability (or uptime) of our system is quite crucial since a calendar you can't access isn't of much use.
 
 \section{UML Package Diagram}
 \includegraphics[width=\linewidth]{../Pictures/UML_Package_Diagram.jpg}

@@ -13,12 +13,22 @@ namespace UI
 
         public void DisplayTask(Task task)
         {
-
+            throw new NotImplementedException();
         }
 
         public void DisplayTasks(List<Task> task)
         {
+            throw new NotImplementedException();
+        }
 
+        public void UpdateCalendar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowError(Error error)
+        {
+            throw new NotImplementedException();
         }
     }
 }

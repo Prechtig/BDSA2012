@@ -13,17 +13,17 @@ namespace Model
 
         public bool CreateTask(Task task)
         {
-            return true;
+            throw new NotImplementedException();
         }
 
         public Task GetTask(uint id)
         {
-            return null;
+            throw new NotImplementedException();
         }
 
         public List<Task> GetTasks(DateTime startDate, DateTime endDate)
         {
-            return null;
+            throw new NotImplementedException();
         }
     }
 }

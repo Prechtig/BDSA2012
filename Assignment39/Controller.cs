@@ -28,12 +28,28 @@ namespace Controller
         }
 
         /// <summary>
+        /// Create a task
+        /// </summary>
+        /// <param name="task">The task to create</param>
+        /// <returns>Wether or not the call was successful</returns>
+        public void CreateTask(Task task)
+        {
+            if (domain.CreateTask(task))
+            {
+                view.UpdateCalendar();
+            }
+            else
+            {
+                view.ShowError(new Error("Create Task Error"));
+            }
+        }
+
+        /// <summary>
         /// Invoked when a user clicks on a task
         /// </summary>
-        private void DisplayTask(uint id)
+        public void GetTask(uint id)
         {
-            Task task = domain.GetTask(id);
-            view.DisplayTask(task);
+            view.DisplayTask(domain.GetTask(id));
         }
 
         /// <summary>
